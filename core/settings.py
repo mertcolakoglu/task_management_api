@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'djoser',
     'users',
     'projects',
+    'tasks',
 ]
 
 MIDDLEWARE = [

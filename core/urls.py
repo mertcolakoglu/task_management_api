@@ -25,6 +25,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
     path('api/', include('users.urls')),
     path('api/', include('projects.urls')),
+    path('api/', include('tasks.urls')),
 ]
 
 if settings.DEBUG:

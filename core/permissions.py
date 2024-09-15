@@ -11,3 +11,15 @@ class IsProjectOwnerOrManager(permissions.BasePermission):
         if user_member:
             return user_member.role in ['OWNER', 'MANAGER']
         return False
+
+class IsTeamMemberOrReadOnly(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return obj.project.team_members.filter(user=request.user).exists()
+
+class IsAssignedOrCreatorOrReadOnly(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return obj.task.assigned_to == request.user or obj.task.created_by == request.user
