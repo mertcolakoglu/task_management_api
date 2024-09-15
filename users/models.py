@@ -18,7 +18,7 @@ class User(AbstractUser):
     
 
 class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
     user_name_surname = models.CharField(max_length=100)
     bio = models.TextField(blank=True)
     profile_image = models.ImageField(upload_to='profile_images/', blank=True, null=True)

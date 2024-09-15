@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'djoser',
     'users',
+    'projects',
 ]
 
 MIDDLEWARE = [
@@ -141,6 +142,11 @@ SIMPLE_JWT = {
 }
 
 DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.CustomUserCreateSerializer',
+        'user': 'users.serializers.UserSerializer',
+        'current_user': 'users.serializers.UserSerializer',
+    },
     'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
 }
